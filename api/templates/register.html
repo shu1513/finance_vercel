@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+
+{% block head %}
+{% endblock %}
+
+{% block title %}
+    Register
+{% endblock %}
+
+{% block main %}
+    <!-- will need to add email password confirmation or/linked account with facebook -->
+    <form id="registrationForm" onsubmit="return validateForm()" action="/register" method="post">
+        <div class="mb-3">
+            <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="username" name="username" placeholder="Username" type="text" required oninput="checkUsername()">
+            <div id ="usernameGuide1"></div>
+            <div id ="usernameGuide2"></div>
+            <div id ="usernameGuide3"></div>
+            <div id="usernameCheck"></div>
+        </div>
+        <div class="mb-3">
+            <input autocomplete="off" class="form-control mx-auto w-auto" type="email" id="email" name="email"placeholder="email">
+        </div>
+        <div class="mb-3">
+
+            <input class="form-control mx-auto w-auto" minlength="8" maxlength="16" id="password" name="password" placeholder="Password" type="password" required oninput="passwordGuide()">
+            <div id="passwordGuide1"></div>
+            <div id="passwordGuide2"></div>
+            <div id="passwordGuide3"></div>
+        </div>
+        <div class="mb-3">
+            <input
+            class="form-control mx-auto w-auto"
+            minlength="8"
+            maxlength="16"
+            id="confirmPassword"
+            name="confirmPassword" placeholder="Re-enter password"
+            type="password"
+            oninput="checkPasswordMatch()"
+            required>
+            <span id="confirmationIcon"></span>
+            <span id="confirmationMessage"></span>
+            <br>
+        </div>
+        <button class="btn btn-primary" type="submit">Register</button>
+    </form>
+    <script src="{{ url_for('static', filename='register_script.js') }}"></script>
+{% endblock %}

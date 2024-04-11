@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Quote
+{% endblock %}
+
+{% block main %}
+    <form action = "/quote" method = "post" onsubmit = "return validatequote()">
+        <div class="mb-3">
+            <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="quote" name="quote" placeholder="Symbol" type="text" required>
+        </div>
+        <div id="quoteGuide"></div>
+        <button class="btn btn-primary" type="submit">Quote</button>
+    </form>
+    <script src="{{ url_for('static', filename='quote_script.js') }}"></script>
+{% endblock %}

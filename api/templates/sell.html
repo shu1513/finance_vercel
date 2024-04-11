@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Sell
+{% endblock %}
+
+{% block main %}
+    <form action="/sell" method="post" onsubmit="return checkShares()">
+        <div class = "mb-3">
+        <select name = "stocks_selected" class="form-select mx-auto w-auto" name="symbol" required>
+            <option disabled selected>symbol</option>
+            {% for stock in stocks_owned %}
+            <option value ="{{stock}}">{{stock}}</option>
+            {% endfor %}
+        </select>
+        </div>
+        <div class="mb-3">
+            <input autocomplete="off" class="form-control mx-auto w-auto" id="shares" name="shares" placeholder="Shares" type="number" min="1" oninput="checkShares()">
+        </div>
+        <button class="btn btn-primary" type="submit">Sell</button>
+    </form>
+    <script src="{{ url_for('static', filename='sell_script.js') }}"></script>
+{% endblock %}
