@@ -3,4 +3,5 @@ Flask==2.2.2
 Flask-Session
 requests
 datetime
+python_version = "3.11.0"
 
